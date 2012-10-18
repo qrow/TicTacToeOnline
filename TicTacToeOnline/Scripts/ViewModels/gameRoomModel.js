@@ -122,8 +122,8 @@
         self.games = ko.observableArray([]);
         self.players = ko.observableArray([]);
 
-        self.email = ko.observable("asdfsadfsdf@sdfsdff.df");
-        self.nickname = ko.observable("asdfsghhh");
+        self.email = ko.observable("too_lazy_to_write@email" + Math.floor(Math.random()*1011) + ".yo");
+        self.nickname = ko.observable("boss_" + Math.floor(Math.random() * 1011));
         self.id = ko.observable();
         self.gameId = ko.observable();
 
