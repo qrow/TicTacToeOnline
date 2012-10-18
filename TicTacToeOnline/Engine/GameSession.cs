@@ -148,11 +148,13 @@ namespace TicTacToeOnline.Engine
             if (WeHaveWinner(out winner))
             {
                 EndWithWinner(winner);
+                return;
             }
 
             if (_turnCount >= 9)
             {
                 EndWithDraw();
+                return;
             }
         }
 
