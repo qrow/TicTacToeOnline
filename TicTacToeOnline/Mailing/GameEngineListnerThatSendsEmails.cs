@@ -21,7 +21,7 @@ namespace TicTacToeOnline.Mailing
                     Body = "Congratulations you won in Tic Tac Toe against" + game.Looser.NickName
                 };
                 mailMessage.To.Add(game.Winner.Email);
-                mailMessage.Send();
+                //mailMessage.Send(); //uncomment to really send mails
             }
         }
     }
