@@ -36,8 +36,8 @@ namespace TicTacToeOnline.App_Start
             bootstrapper.Initialize(() => kernel);
 
             kernel.Get<GamesRoomGameEngineEventListner>(); //start listening game engine events
-            kernel.Get<GameEngineListnerThatSendsEmails>(); //start listening game engine events
-            kernel.Get<GameEngineListnerThatStoresLogsToDb>(); //start listening game engine events
+            //kernel.Get<GameEngineListnerThatSendsEmails>(); //start listening game engine events
+            //kernel.Get<GameEngineListnerThatStoresLogsToDb>(); //start listening game engine events
             Database.SetInitializer(new CreateDatabaseIfNotExists<TicTacToeDbContext>());
             
         }
