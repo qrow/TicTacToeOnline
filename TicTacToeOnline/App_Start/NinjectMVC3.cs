@@ -73,11 +73,11 @@ namespace TicTacToeOnline.App_Start
             kernel.Bind<Func<IConnectionManager>>().ToMethod(
                 ctx => () => AspNetHost.DependencyResolver.Resolve<IConnectionManager>());
 
-            kernel.Bind<Func<TicTacToeDbContext>>().ToMethod(ctx => () => ctx.Kernel.Get<TicTacToeDbContext>());
+            kernel.Bind<Func<TicTacToeDbContext>>().ToMethod(ctx => () => ctx.Kernel.Get<TicTacToeDbContext>()).InSingletonScope();
 
             kernel.Bind<TicTacToeDbContext>()
                 .ToSelf()
-                .InRequestScope()
+                .InSingletonScope()
                 .WithConstructorArgument("nameOrConnectionString", "TicTacToeOnlineDb");
         }        
     }

@@ -122,18 +122,26 @@ namespace TicTacToeOnline.DbLogs
 
         private PlayerActionType GetOrCreatePlayerAction(string actionTypeName)
         {
-            return _dbContextFactory()
-                .PlayerActionTypes
-                .SingleOrDefault(a => a.Name == actionTypeName)
-                ?? new PlayerActionType { Name = actionTypeName };
+            var playerActionType = _dbContextFactory().PlayerActionTypes.SingleOrDefault(a => a.Name == actionTypeName);
+            if (playerActionType == null)
+            {
+                playerActionType = new PlayerActionType { Name = actionTypeName };
+                _dbContextFactory().PlayerActionTypes.Add(playerActionType);
+                _dbContextFactory().SaveChanges();
+            }
+            return playerActionType;
         }
 
         private GameEventType GetOrCreateGameEvent(string eventTypeName)
         {
-            return _dbContextFactory()
-                .GameEventTypes
-                .SingleOrDefault(a => a.Name == eventTypeName)
-                ?? new GameEventType { Name = eventTypeName };
+            var gameEventType = _dbContextFactory().GameEventTypes.SingleOrDefault(a => a.Name == eventTypeName);
+            if (gameEventType == null)
+            {
+                gameEventType = new GameEventType { Name = eventTypeName };
+                _dbContextFactory().GameEventTypes.Add(gameEventType);
+                _dbContextFactory().SaveChanges();
+            }
+            return gameEventType;
         }
     }
 }
